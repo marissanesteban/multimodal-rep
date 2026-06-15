@@ -7,11 +7,14 @@
 
 ## Project Goal
 
-The long-term goal of this project is to reconstruct volumetric gene expression across serial tissue sections by integrating spatial transcriptomics (ST) and H&E histology. Specifically, we are building a model that:
+To reconstruct volumetric gene expression across serial tissue sections by integrating spatial transcriptomics (ST) and H&E histology. Specifically, we are building a model that:
 
 1. Trains separate encoders for H&E patches and ST gene expression
 2. Aligns them into a **shared latent space** where morphology and transcriptomics co-exist as comparable representations
 3. Uses H&E images at unmeasured sections as direct spatial anchors — mapping them into the shared latent space to infer gene expression
+
+Future Steps:
+- integrate spatial context in embeddings and gene predictor
 
 ---
 
