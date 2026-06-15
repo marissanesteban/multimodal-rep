@@ -1,4 +1,4 @@
-# multimodal-representation to build 3d tissues
+# Multimodal Latent Alignment
 
 **By:** Marissa Esteban  
 **Affiliation:** Woappi Lab / Dumitrascu Lab, Columbia University
