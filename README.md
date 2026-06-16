@@ -24,7 +24,7 @@ Future Steps:
 
 ---
 
-## Proof of Concept Strategy
+## Proof of Concept Roadmap
 
 Before building the full architecture, I am first validating the key assumptions using existing tools:
 
@@ -51,11 +51,13 @@ multimodal-representation/
 │       └── notebooks for embedding extraction (note: requires mouse→human gene remapping)
 │
 ├── gexp_prediction/                 # Gene expression prediction from embeddings
-│   └── trainMLP.ipynb               # Full pipeline: load embeddings → preprocess → train MLP → evaluate
+│   └── trainMLP.ipynb               # Full pipeline: generate embeddings → preprocess → train MLP → evaluate
 │
 └── exploration/                     # Learning notebooks (PyTorch, CNNs, tutorials)
     └── not part of main pipeline
 ```
+
+spatial_fusion: folder that runs SpatialFusion on two main datasets. Includes benchmarking scripts and visualizations from SpatialFusion paper.
 
 ---
 
@@ -69,7 +71,7 @@ multimodal-representation/
 
 **Data:**
 - OvCa Xenium tutorial crop: 46,691 cells × 5,101 genes (proof of concept dataset)
-- NEXT: Full OVCA data
+- NEXT: [Full OVCA data](https://www.10xgenomics.com/datasets/xenium-prime-ffpe-human-ovarian-cancer)
 - Unwounded Woappi Visium HD: ~113k spots × 19k genes (mouse; requires ortholog remapping? Or geneformer mouse foundation model)
 
 ---
