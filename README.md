@@ -16,26 +16,9 @@ To reconstruct volumetric gene expression across serial tissue sections by integ
 Future Steps:
 - integrate spatial context in embeddings and gene predictor
 
----
-
 ## Driving Question
 
-> Given a shared latent space aligned between H&E and ST, how faithfully can H&E alone recover a position in that space — and is that fidelity sufficient to anchor 3D interpolation of gene expression between sections?
-
----
-
-## Proof of Concept Roadmap
-
-Before building the full architecture, I am first validating the key assumptions using existing tools:
-
-**Step 1 — Generate aligned embeddings using SpatialFusion**  
-SpatialFusion (Dann et al., 2026) trains a multimodal autoencoder (mAE) that aligns H&E embeddings (via UNI) and ST embeddings (via scGPT) into a shared 64-dimensional latent space. We use this as our alignment framework before building our own.
-
-**Step 2 — Test whether H&E alone can predict gene expression**  
-Using the three embeddings output by SpatialFusion (z_HE, z_ST, z_joint), I train a small MLP gene expression predictor and evaluate prediction quality (~/trainMLP.ipynb)
-
-**Step 3 — Establish a quantitative baseline**  
-Gap between z_HE and z_ST performance as a baseline?
+Given a shared latent space aligned between H&E and ST, how faithfully can H&E alone recover a position in that space — and is that fidelity sufficient to anchor 3D interpolation of gene expression between sections?
 
 ---
 
@@ -61,6 +44,21 @@ spatial_fusion: Includes benchmarking scripts and visualizations from SpatialFus
 
 ---
 
+## Proof of Concept Roadmap
+
+Before building the full architecture, I am first validating the key assumptions using existing tools:
+
+**Step 1 — Generate aligned embeddings using SpatialFusion**  
+SpatialFusion (Dann et al., 2026) trains a multimodal autoencoder (mAE) that aligns H&E embeddings (via UNI) and ST embeddings (via scGPT) into a shared 64-dimensional latent space. We use this as our alignment framework before building our own.
+
+**Step 2 — Test whether H&E alone can predict gene expression**  
+Using the three embeddings output by SpatialFusion (z_HE, z_ST, z_joint), I train a small MLP gene expression predictor and evaluate prediction quality (~/trainMLP.ipynb)
+
+**Step 3 — Establish a quantitative baseline**  
+Gap between z_HE and z_ST performance as a baseline?
+
+---
+
 ## Methods
 
 **Embeddings:** Generated using SpatialFusion's multimodal autoencoder. H&E patches (256×256px) encoded via frozen UNI (1536-dim), gene expression encoded via frozen scGPT (512-dim), both projected into a shared 64-dim latent space via a trained mAE.
@@ -69,7 +67,7 @@ spatial_fusion: Includes benchmarking scripts and visualizations from SpatialFus
 
 **Evaluation:** Mean Pearson and Spearman correlation per gene across validation spots.
 
-**Data:**
+## Data:
 - OvCa Xenium tutorial crop: 46,691 cells × 5,101 genes (proof of concept dataset)
 - NEXT: [Full OVCA data](https://www.10xgenomics.com/datasets/xenium-prime-ffpe-human-ovarian-cancer)
 - Unwounded Woappi Visium HD: ~113k spots × 19k genes (mouse; requires ortholog remapping? Or geneformer mouse foundation model)
