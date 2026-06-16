@@ -57,7 +57,7 @@ multimodal-representation/
     └── not part of main pipeline
 ```
 
-spatial_fusion: folder that runs SpatialFusion on two main datasets. Includes benchmarking scripts and visualizations from SpatialFusion paper.
+spatial_fusion: Includes benchmarking scripts and visualizations from SpatialFusion paper.
 
 ---
 
